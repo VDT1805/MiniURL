@@ -1,0 +1,52 @@
+package com.vdtoan.miniurl_backend.services.impl;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.exception.ExceptionContext;
+import org.bson.codecs.jsr310.LocalDateCodec;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.standard.DateTimeContext;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Service;
+import java.time.LocalDateTime;
+import java.net.URI;
+
+import com.fasterxml.jackson.databind.util.ExceptionUtil;
+import com.vdtoan.miniurl_backend.domains.UrlRequestDTO;
+import com.vdtoan.miniurl_backend.domains.UrlResponseDTO;
+import com.vdtoan.miniurl_backend.models.UrlModel;
+import com.vdtoan.miniurl_backend.repositories.UrlRepository;
+import com.vdtoan.miniurl_backend.services.UrlService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class UrlServiceImpl implements UrlService {
+
+    @Autowired
+    private UrlRepository repo;
+
+    @Override
+    public UrlResponseDTO createShortUrl(UrlRequestDTO urlRequestDTO, HttpServletRequest request) {
+        String id = RandomStringUtils.randomAlphanumeric(6,10); //The url shortcode
+        while (repo.existsById(id)) {
+            // Generate a new shortcode
+            id = RandomStringUtils.randomAlphanumeric(6,10); //Randomly create a short code 6-10 characters long
+            
+        }
+        repo.save(new UrlModel(id, urlRequestDTO.originalUrl(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(urlRequestDTO.expireAfter())));
+
+        String redirectURL = request.getRequestURL().toString().replace("shorten",id);
+
+        return new UrlResponseDTO(redirectURL, urlRequestDTO.originalUrl());
+    }
+
+    @Override
+    public HttpHeaders redirect(String shortCode) {
+        //Todo: implement redirect
+        return null;
+    }
+
+}

@@ -18,6 +18,8 @@ public class UrlModel {
     @Id
     private String id; // shortCodeURL
     private String originalUrl;
+    private LocalDateTime createdAt;
     @Indexed(expireAfterSeconds = 0)
     private LocalDateTime expiredAt;
+
 }

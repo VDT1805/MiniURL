@@ -14,6 +14,7 @@ import java.net.URI;
 import com.fasterxml.jackson.databind.util.ExceptionUtil;
 import com.vdtoan.miniurl_backend.domains.UrlRequestDTO;
 import com.vdtoan.miniurl_backend.domains.UrlResponseDTO;
+import com.vdtoan.miniurl_backend.exceptions.UrlNotFoundException;
 import com.vdtoan.miniurl_backend.models.UrlModel;
 import com.vdtoan.miniurl_backend.repositories.UrlRepository;
 import com.vdtoan.miniurl_backend.services.UrlService;
@@ -45,7 +46,7 @@ public class UrlServiceImpl implements UrlService {
 
     @Override
     public HttpHeaders redirect(String shortCode) {
-        UrlModel url = repo.findById(shortCode).orElseThrow(null);
+        UrlModel url = repo.findById(shortCode).orElseThrow(() -> new UrlNotFoundException(shortCode));
         HttpHeaders headers = new HttpHeaders();
         // throw new UnsupportedOperationException(URI.create(url.getOriginalUrl()).toString());
         headers.setLocation(URI.create(url.getOriginalUrl()));

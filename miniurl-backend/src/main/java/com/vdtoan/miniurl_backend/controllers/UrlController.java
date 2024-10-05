@@ -34,8 +34,8 @@ public class UrlController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Void> getMethodName(@PathVariable("id") String id) {
-        //Todo: process GET request
-        return null;
+        HttpHeaders headers = urlService.redirect(id);
+        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
     }
     
     

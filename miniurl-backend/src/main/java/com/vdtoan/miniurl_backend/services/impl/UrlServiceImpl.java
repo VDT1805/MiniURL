@@ -45,8 +45,11 @@ public class UrlServiceImpl implements UrlService {
 
     @Override
     public HttpHeaders redirect(String shortCode) {
-        //Todo: implement redirect
-        return null;
+        UrlModel url = repo.findById(shortCode).orElseThrow(null);
+        HttpHeaders headers = new HttpHeaders();
+        // throw new UnsupportedOperationException(URI.create(url.getOriginalUrl()).toString());
+        headers.setLocation(URI.create(url.getOriginalUrl()));
+        return headers;
     }
 
 }

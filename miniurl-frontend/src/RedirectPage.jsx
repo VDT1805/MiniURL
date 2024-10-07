@@ -15,11 +15,12 @@ export default function RedirectPage() {
     const data = useLoaderData();
 
   if (!data) {
-    return <div>
+    return 
+    <div>
             <h3>
             Redirecting to original URL...
             </h3>
-        </div>;
+    </div>;
   }
 
   const { shortCode } = data;

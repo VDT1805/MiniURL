@@ -35,7 +35,7 @@ const InputURLForm = ({ onSubmit }) => {
     }
 
     const formattedUrl = /^(https?|ftp):\/\//i.test(url) ? url : `http://${url}`;
-    onSubmit(formattedUrl,minutes);
+    onSubmit(formattedUrl,window.location.href,minutes);
     setUrl('');
   };
 

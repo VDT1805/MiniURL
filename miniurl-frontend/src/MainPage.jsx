@@ -10,8 +10,8 @@ function MainPage() {
   const [url, setUrl] = useState()
   const [shortendUrl, setShortenedUrl] = useState('')
   const [copiedStatus, setCopiedStatus] = useState(false)
-  const handleSubmit = async (url,minutes) => {
-    shortenURLendpoint({originalUrl: url,expireAfter: minutes}).then((response) => {
+  const handleSubmit = async (url,currentUrl,minutes) => {
+    shortenURLendpoint({originalUrl: url,currentUrl:currentUrl,expireAfter: minutes}).then((response) => {
       setShortenedUrl(response.data.shortenedUrl)
     }).catch((error) => {
       toast.error('An error occurred, please try again later')

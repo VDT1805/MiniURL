@@ -12,11 +12,22 @@ export async function urlLoader({ params }) {
 
 
 export default function RedirectPage() {
-    const { shortCode } = useLoaderData();
+    const data = useLoaderData();
+
+  if (!data) {
+    return <div>
+            <h3>
+            Redirecting to original URL...
+            </h3>
+        </div>;
+  }
+
+  const { shortCode } = data;
 
 
-  return (
-    <div>
-    </div>
-  );
+//   return (
+//     <div>
+//         Redirecting to original URL...
+//     </div>
+//   );
 }

@@ -1,17 +1,10 @@
 package com.vdtoan.miniurl_backend.services.impl;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.exception.ExceptionContext;
-import org.bson.codecs.jsr310.LocalDateCodec;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.standard.DateTimeContext;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import java.net.URI;
 
-import com.fasterxml.jackson.databind.util.ExceptionUtil;
 import com.vdtoan.miniurl_backend.domains.UrlRequestDTO;
 import com.vdtoan.miniurl_backend.domains.UrlResponseDTO;
 import com.vdtoan.miniurl_backend.exceptions.UrlNotFoundException;
@@ -39,8 +32,8 @@ public class UrlServiceImpl implements UrlService {
         }
         repo.save(new UrlModel(id, urlRequestDTO.originalUrl(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(urlRequestDTO.expireAfter())));
 
-        String redirectURL = request.getRequestURL().toString().replace("api/shorten",id);
-
+        // String redirectURL = request.getRequestURL().toString().replace("api/shorten",id);
+        String redirectURL = urlRequestDTO.currentUrl() + id;
         return new UrlResponseDTO(redirectURL, urlRequestDTO.originalUrl());
     }
 

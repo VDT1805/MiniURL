@@ -1,9 +1,9 @@
 // apiService.js
 import apiClient from './apiClient';
 
-// export const fetchEndpoint1 = () => {
-//     return apiClient.get('/endpoint1');
-//   };
+export const originalURLendpoint = (id) => {
+    return apiClient.get(`/${id}`);
+  };
 export const shortenURLendpoint = (data) => {
     return apiClient.post('/shorten', data);
 };

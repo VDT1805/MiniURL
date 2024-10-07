@@ -36,9 +36,10 @@ public class UrlController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Void> getMethodName(@PathVariable("id") String id) {
-        HttpHeaders headers = urlService.redirect(id);
-        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
+    public ResponseEntity<String> getMethodName(@PathVariable("id") String id) {
+        // HttpHeaders headers = urlService.redirect(id);
+        // return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
+        return ResponseEntity.ok(urlService.getOriginalUrl(id));
     }
     
     

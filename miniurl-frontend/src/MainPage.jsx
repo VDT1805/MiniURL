@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
-import InputURLForm from './component/InputURLForm'
+import './MainPage.css'
+import InputURLForm from './components/InputURLForm'
 import { shortenURLendpoint } from './api/apiService'
-import ShortenedURL from './component/ShortenedURL'
+import ShortenedURL from './components/ShortenedURL'
 import { ToastContainer } from 'react-toastify'
-function App() {
+function MainPage() {
   const [url, setUrl] = useState()
   const [shortendUrl, setShortenedUrl] = useState('')
   const [copiedStatus, setCopiedStatus] = useState(false)
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App
+export default MainPage

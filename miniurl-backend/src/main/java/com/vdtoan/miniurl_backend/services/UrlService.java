@@ -14,7 +14,8 @@ public interface UrlService {
 
     UrlResponseDTO createShortUrl(UrlRequestDTO urlRequestDTO, HttpServletRequest request);
 
-    HttpHeaders redirect(String shortCode);
+    // HttpHeaders redirect(String shortCode);
+    String getOriginalUrl(String shortCode);
 } 
 
 

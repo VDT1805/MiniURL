@@ -44,13 +44,19 @@ public class UrlServiceImpl implements UrlService {
         return new UrlResponseDTO(redirectURL, urlRequestDTO.originalUrl());
     }
 
+    // @Override
+    // public HttpHeaders redirect(String shortCode) {
+    //     UrlModel url = repo.findById(shortCode).orElseThrow(() -> new UrlNotFoundException(shortCode));
+    //     HttpHeaders headers = new HttpHeaders();
+    //     // throw new UnsupportedOperationException(URI.create(url.getOriginalUrl()).toString());
+    //     headers.setLocation(URI.create(url.getOriginalUrl()));
+    //     return headers;
+    // }
+
     @Override
-    public HttpHeaders redirect(String shortCode) {
-        UrlModel url = repo.findById(shortCode).orElseThrow(() -> new UrlNotFoundException(shortCode));
-        HttpHeaders headers = new HttpHeaders();
-        // throw new UnsupportedOperationException(URI.create(url.getOriginalUrl()).toString());
-        headers.setLocation(URI.create(url.getOriginalUrl()));
-        return headers;
+    public String getOriginalUrl(String shortCode) {
+        UrlModel url = repo.findById(shortCode).orElseThrow(() -> new UrlNotFoundException(shortCode)); 
+        return url.getOriginalUrl();
     }
 
 }

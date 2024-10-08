@@ -47,6 +47,9 @@ const InputURLForm = ({ onSubmit }) => {
 
       <div>
           <form className="input-form" onSubmit={handleSubmit}>
+            <label htmlFor="input-url" className="input-label">
+              Enter URL: 
+            </label>
             <input
               type="text"
               className="input-url"
@@ -54,7 +57,9 @@ const InputURLForm = ({ onSubmit }) => {
               onChange={handleChange}
               placeholder="http://www.example.com"
             />
-            
+            <label htmlFor="input-minutes" className="input-label"> 
+              Enter Time To Live minutes:
+            </label>
             <input
               type="text"
               className="input-minutes"

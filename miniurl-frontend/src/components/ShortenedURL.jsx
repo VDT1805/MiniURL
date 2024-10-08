@@ -7,7 +7,7 @@ const ShortenedURL = ({ url, onCopy }) => {
 
   return (
     <div className="shortened-url">
-      <p>Your shortened URL: {url}</p>
+      <p>Your shortened URL: <a href={url}>{url}</a></p>
       <button className="copy-button-shorten" onClick={
         () => {
             navigator.clipboard.writeText(url);

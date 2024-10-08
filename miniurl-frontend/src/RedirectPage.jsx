@@ -5,7 +5,7 @@ export async function urlLoader({ params }) {
     originalURLendpoint(params.shortCode).then((response) => {
         window.location.href = response.data;
     }).catch((error) => {
-        return redirect('/');
+        return redirect('/404');
     });
     return null;
   }

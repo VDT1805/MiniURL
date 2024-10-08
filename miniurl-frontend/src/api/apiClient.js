@@ -11,13 +11,9 @@ const apiClient = axios.create({
   apiClient.interceptors.response.use(
     response => response,
     error => {
-      console.error('API call failed:', error);
       // Handle specific error cases
-      if (error.response.status === 401) {
-        toast.error('Unauthorized');
-      } else if (error.response.status === 404) {
-        toast.error('Resource not found');
-      }
+      toast.error("Something went wrong. Please try again later.");
+  
       return Promise.reject(error);
     }
   );

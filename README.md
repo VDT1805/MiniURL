@@ -64,10 +64,11 @@ We can easily run the whole system with only a single command:
 ```
 Docker will pull the MongoDB and Spring Boot images (if our machine does not have it before). 
 
-We can easily access the web on port 3000
+We can easily access the web on port 3000:
 ```bash
   localhost:3000
 ```
+**Please note that you might have to wait a little while for the web application to start as the services may take some time to fully initialize. Please double check the log file in docker container to make sure**
 
 ### On Local
 You will need the required tools installed in your computer.

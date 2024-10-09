@@ -70,6 +70,9 @@ We can easily access the web on port 3000:
 ```
 **Please note that you might have to wait a little while for the web application to start as the services may take some time to fully initialize. Please double check the log file in docker container to make sure**
 
+Getting errors? See Troubleshooting part
+
+
 ### On Local
 You will need the required tools installed in your computer.
 

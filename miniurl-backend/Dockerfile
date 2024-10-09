@@ -28,4 +28,4 @@ RUN chmod +x /usr/wait-for-it.sh
 EXPOSE 8080
 
 # Command to run the application
-CMD ["bash", "-c", "/usr/wait-for-it.sh --timeout=25 mongodb:27017 && java -jar app.jar"]
+CMD ["bash", "-c", "/usr/wait-for-it.sh --timeout=600 mongodb:27017 && java -jar app.jar"]

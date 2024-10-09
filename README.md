@@ -1,6 +1,6 @@
 # MiniURL
 
-A URL shortener web application using React, Spring and MongoDB.
+A URL shortener web application using React.js, Spring and MongoDB.
 
 
 ![Demo](./images/a1.png)
@@ -167,7 +167,7 @@ Miniurl returns the following status codes in its API:
 | 500 | `INTERNAL SERVER ERROR` |
 
 ## DB Design
-The database is very simple. So there will not be any schema
+The database is very simple. So there will not be any schema.
 
 ### Database Schema
 
@@ -187,3 +187,33 @@ public class UrlModel {
 - originalUrl: The original, full-length URL.
 - createdAt: The timestamp when the URL was created.
 - expiredAt: The expiration time for the shortened URL, automatically removed by MongoDB after expiration (expireAfterSeconds index).
+
+## Environment Variables
+
+### On Docker
+
+The ```.env``` on root folder is dedicated for ```docker-compose.yml```
+
+- **MONGODB_USER**: Username for MongoDB authentication.
+- **MONGODB_PASSWORD**: Password for MongoDB.
+- **MONGODB_DATABASE**: The name of the MongoDB database used.
+- **MONGODB_LOCAL_PORT**: The local port for MongoDB.
+- **MONGODB_DOCKER_PORT**: The port for MongoDB in the Docker container.
+
+- **SPRING_LOCAL_PORT**: The local port on which the Spring application runs.
+- **SPRING_DOCKER_PORT**: The port for Spring in the Docker container.
+- **SPRING_PROFILES_ACTIVE**: Specifies the active profile for the Spring application, set to `docker` for Docker-specific configurations.
+
+- **REACT_LOCAL_PORT**: The local port for the React frontend.
+- **REACT_DOCKER_PORT**: The port for React in the Docker container.
+
+The backend environment file for docker env is in:
+```
+    miniurl-backend\src\resources\application-docker.properties
+```
+### On Local
+You can create a new environment file and run it by changing the `spring.profiles.active` value in the `application.properties` file. This allows you to switch between different profiles for different environments (e.g., `dev`, `prod`, `docker`).
+
+For example, to activate the ```dev``` environment, set:
+```spring.profiles.active=dev```
+This will apply the configurations specified in the `application-dev.properties` file.

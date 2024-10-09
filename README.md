@@ -51,7 +51,7 @@ It's highly recommended to use Docker to prevent the hassle of setting up enviro
 
 First off, let's clone this repo:
 ```bash
-  gh repo clone VDT1805/MiniURL
+  git clone https://github.com/VDT1805/MiniURL.git --config core.autocrlf=input
 ```
 Get to root folder:
 ```bash
@@ -75,7 +75,7 @@ You will need the required tools installed in your computer.
 
 First off, let's clone this repo:
 ```bash
-  gh repo clone VDT1805/MiniURL
+  git clone https://github.com/VDT1805/MiniURL.git --config core.autocrlf=input
 ```
 
 Get to root folder:
@@ -218,3 +218,16 @@ You can create a new environment file and run it by changing the `spring.profile
 For example, to activate the ```dev``` environment, set:
 ```spring.profiles.active=dev```
 This will apply the configurations specified in the `application-dev.properties` file.
+
+## Troubleshooting
+Error when running Docker frontend and backend container
+```bash
+/usr/bin/env: 'bash\r': No such file or directory
+```
+### Solutions:
+- Save the script ```wait-for-it.sh``` in ```miniurl-frontend``` folder and ```miniurl-backend``` folder using LF instead of CRLF as the line separator.
+- Delete the containers and images, rebuild again
+
+### Source:
+[Stackoverflow](https://stackoverflow.com/questions/70380310/docker-env-bash-r-no-such-file-or-directory)
+[Github](https://github.com/tiangolo/uwsgi-nginx-flask-docker/issues/127)

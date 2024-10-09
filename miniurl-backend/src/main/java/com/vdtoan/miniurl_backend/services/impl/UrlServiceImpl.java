@@ -47,9 +47,9 @@ public class UrlServiceImpl implements UrlService {
     // }
 
     @Override
-    public String getOriginalUrl(String shortCode) {
+    public UrlResponseDTO getOriginalUrl(String shortCode) {
         UrlModel url = repo.findById(shortCode).orElseThrow(() -> new UrlNotFoundException(shortCode)); 
-        return url.getOriginalUrl();
+        return new UrlResponseDTO(shortCode, url.getOriginalUrl());
     }
 
 }

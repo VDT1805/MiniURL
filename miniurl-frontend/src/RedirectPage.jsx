@@ -4,7 +4,7 @@ import { originalURLendpoint } from "./api/apiService";
 
 export async function urlLoader({ params }) {
     originalURLendpoint(params.shortCode).then((response) => {
-        window.location.href = response.data;
+        window.location.href = response.data.originalUrl;
     });
     return null;
   }

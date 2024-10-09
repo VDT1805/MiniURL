@@ -168,7 +168,7 @@ Miniurl returns the following status codes in its API:
 | 500 | `INTERNAL SERVER ERROR` |
 
 ## DB Design
-The database is very simple. So there will not be any schema.
+The database is very simple.
 
 ### Database Schema
 

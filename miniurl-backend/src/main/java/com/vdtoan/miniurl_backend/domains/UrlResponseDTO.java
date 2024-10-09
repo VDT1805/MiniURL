@@ -1,5 +1,5 @@
 package com.vdtoan.miniurl_backend.domains;
 
-public record UrlResponseDTO(String shortenedUrl, String originalUrl) {
-
-} 
+public record UrlResponseDTO(String shortenedCode, String originalUrl) 
+{
+}

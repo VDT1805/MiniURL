@@ -33,8 +33,8 @@ public class UrlServiceImpl implements UrlService {
         repo.save(new UrlModel(id, urlRequestDTO.originalUrl(), LocalDateTime.now(), LocalDateTime.now().plusMinutes(urlRequestDTO.expireAfter())));
 
         // String redirectURL = request.getRequestURL().toString().replace("api/shorten",id);
-        String redirectURL = urlRequestDTO.currentUrl() + id;
-        return new UrlResponseDTO(redirectURL, urlRequestDTO.originalUrl());
+        
+        return new UrlResponseDTO(id, urlRequestDTO.originalUrl());
     }
 
     // @Override

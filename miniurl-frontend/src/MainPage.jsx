@@ -9,11 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
 function MainPage() {
   const [url, setUrl] = useState()
-  const [shortendUrl, setShortenedUrl] = useState('')
+  const [shortendCode, setShortenedCode] = useState('')
   const [copiedStatus, setCopiedStatus] = useState(false)
-  const handleSubmit = async (url,currentUrl,minutes) => {
-    shortenURLendpoint({originalUrl: url,currentUrl:currentUrl,expireAfter: minutes}).then((response) => {
-      setShortenedUrl(response.data.shortenedUrl)
+  const handleSubmit = async (url,minutes) => {
+    shortenURLendpoint({originalUrl: url,expireAfter: minutes}).then((response) => {
+      setShortenedCode(response.data.shortenedCode)
     })
   };
 
@@ -25,10 +25,10 @@ function MainPage() {
   };
 
   return (
+
     <div className="container">
       <InputURLForm onSubmit={handleSubmit}></InputURLForm>
-      {shortendUrl && <ShortenedURL url={shortendUrl} onCopy={handleCopy}></ShortenedURL>}
-      {/* <ToastContainer/> */}
+      {shortendCode && <ShortenedURL shortCode={shortendCode} onCopy={handleCopy}></ShortenedURL>}
     </div>
   );
 }

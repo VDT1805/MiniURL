@@ -3,8 +3,9 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const ShortenedURL = ({ url, onCopy }) => {
-
+const ShortenedURL = ({ shortCode, onCopy }) => {
+  let url = window.location.href + shortCode;
+  console.log(url);
   return (
     <div className="shortened-url">
       <p>Your shortened URL: <a href={url}>{url}</a></p>
@@ -17,7 +18,6 @@ const ShortenedURL = ({ url, onCopy }) => {
       }>
         Copy
       </button>
-      {/* <ToastContainer containerId="copy"/> */}
     </div>
   );
 };

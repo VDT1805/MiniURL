@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ShortenedURL = ({ shortCode, onCopy }) => {
   let url = window.location.href + shortCode;
-  console.log(url);
   return (
     <div className="shortened-url">
       <p>Your shortened URL: <a href={url}>{url}</a></p>

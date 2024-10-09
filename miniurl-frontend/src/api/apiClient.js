@@ -13,11 +13,11 @@ const apiClient = axios.create({
     error => {
       // Handle specific error cases
       if (error.response.status === 404) {
-        
-        toast.error("URL not found or expired. You will be back shortly");
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 6000); // Adjust the delay as needed (7000ms = 7 seconds)
+        window.location.href = "/404"
+        // toast.error("URL not found or expired. You will be back shortly");
+        // setTimeout(() => {
+        //   window.location.href = "/404";
+        // }, 6000); // Adjust the delay as needed (7000ms = 7 seconds)
       }
       else {
         toast.error("An error occurred. Please try again later.");
